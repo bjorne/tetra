@@ -1,0 +1,26 @@
+{
+  "name": "s3nc",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "underscore": "^1.6.0",
+    "blessed": "0.0.37",
+    "knox": "^0.9.0",
+    "moment": "^2.7.0",
+    "underscore.string": "^2.3.3",
+    "docopt": "^0.4.0"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.7.1",
+    "mocha": "^1.20.1",
+    "gulp": "^3.8.5",
+    "gulp-coffee": "^2.0.1",
+    "gulp-mocha": "^0.4.1"
+  }
+}
