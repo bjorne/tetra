@@ -1,4 +1,4 @@
-# s3nc
+# Tetra
 
 An Amazon S3 client for the terminal. Features...
 

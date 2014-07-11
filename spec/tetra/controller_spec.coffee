@@ -1,4 +1,4 @@
-Controller = require('../../src/s3nc/controller')
+Controller = require('../../src/tetra/controller')
 
 {EventEmitter} = require('events')
 {Promise, defer} = require('rsvp')

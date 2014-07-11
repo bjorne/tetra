@@ -1,3 +1,0 @@
-#!/usr/bin/env node
-
-new (require('../lib/s3nc'))(process.argv).run();

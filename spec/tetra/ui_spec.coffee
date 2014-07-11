@@ -1,4 +1,4 @@
-UI = require('../../src/s3nc/ui')
+UI = require('../../src/tetra/ui')
 {EventEmitter} = require('events')
 
 describe 'UI', ->

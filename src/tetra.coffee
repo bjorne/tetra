@@ -4,22 +4,22 @@ path = require('path')
 blessed = require('blessed')
 knox = require('knox')
 
-Client = require('./s3nc/client')
-UI = require('./s3nc/ui')
-Controller = require('./s3nc/controller')
+Client = require('./tetra/client')
+UI = require('./tetra/ui')
+Controller = require('./tetra/controller')
 
-class S3nc
+class Tetra
   @version = '0.0.0'
   @usage = """
     Usage:
-      s3nc <bucket>
-      s3nc -h | --help | --version
+      tetra <bucket>
+      tetra -h | --help | --version
     """
   constructor: (@argv) ->
   run: ->
     @docopt = docopt(@constructor.usage, argv: @argv[2..], help: true, version: @constructor.version)
 
-    winston.add(winston.transports.File, filename: path.resolve(__dirname, '../log/s3nc.log'), json: false)
+    winston.add(winston.transports.File, filename: path.resolve(__dirname, '../log/tetra.log'), json: false)
     winston.remove(winston.transports.Console)
 
     s3Client = knox.createClient
@@ -32,4 +32,4 @@ class S3nc
     controller = new Controller(winston, ui, client)
     controller.run()
 
-module.exports = S3nc
+module.exports = Tetra

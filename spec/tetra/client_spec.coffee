@@ -1,4 +1,4 @@
-Client = require('../../src/s3nc/client')
+Client = require('../../src/tetra/client')
 
 {EventEmitter} = require('events')
 {Promise, defer} = require('rsvp')
