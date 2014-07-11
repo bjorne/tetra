@@ -3,6 +3,7 @@ winston = require('winston')
 path = require('path')
 blessed = require('blessed')
 knox = require('knox')
+fs = require('fs')
 
 Client = require('./tetra/client')
 UI = require('./tetra/ui')
@@ -19,7 +20,8 @@ class Tetra
   run: ->
     @docopt = docopt(@constructor.usage, argv: @argv[2..], help: true, version: @constructor.version)
 
-    winston.add(winston.transports.File, filename: path.resolve(__dirname, '../log/tetra.log'), json: false)
+    if fs.existsSync path.resolve(__dirname, '../log')
+      winston.add(winston.transports.File, filename: path.resolve(__dirname, '../log/tetra.log'), json: false)
     winston.remove(winston.transports.Console)
 
     s3Client = knox.createClient
