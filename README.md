@@ -2,7 +2,7 @@
 
 An Amazon S3 client for the terminal.
 
-   $ npm install -g tetra
+    $ npm install -g tetra
 
 Features include:
 
