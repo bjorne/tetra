@@ -1,6 +1,6 @@
 {
   "name": "tetra",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "./lib/tetra.js",
   "bin": "./bin/tetra",
