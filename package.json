@@ -9,6 +9,10 @@
   },
   "author": "Bjorn Ramberg <bjorne@gah.se> (https://github.com/bjorne)",
   "license": "ISC",
+  "directories": [
+    "lib",
+    "bin"
+  ],
   "dependencies": {
     "underscore": "^1.6.0",
     "blessed": "0.0.37",
