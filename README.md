@@ -1,6 +1,10 @@
 # Tetra
 
-An Amazon S3 client for the terminal. Features...
+An Amazon S3 client for the terminal.
+
+   $ npm install -g tetra
+
+Features include:
 
 * Curses-like UI with vim bindings for browsing S3 (using [blessed](https://github.com/chjj/blessed))
 
