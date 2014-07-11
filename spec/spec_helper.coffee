@@ -1,0 +1,5 @@
+require('mocha-define')
+chaiAsPromised = require("chai-as-promised")
+chai = require('chai')
+chai.use(chaiAsPromised)
+chai.should()
