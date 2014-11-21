@@ -64,6 +64,12 @@ class Client
     else
       @listBuckets()
 
-
+  stream: (path, s3Bucket) ->
+    deferred = defer()
+    getOptions =
+      Bucket: s3Bucket
+      Key: path
+    deferred.resolve @s3Client.getObject(getOptions).createReadStream()
+    deferred.promise
 
 module.exports = Client

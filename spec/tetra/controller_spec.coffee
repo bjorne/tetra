@@ -17,6 +17,7 @@ describe 'Controller', ->
       f
   def 'client', ->
     list: -> defer().promise
+    stream: -> defer().promise
   subject -> new Controller(@logger, @ui, @client)
 
   describe '#run', ->

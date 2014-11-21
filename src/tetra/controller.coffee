@@ -12,6 +12,8 @@ class Controller
           when 'bucket'
             @s3Bucket = item.name
             @_list('/')
+          when 'file'
+            @_view(item.path)
 
   _list: (path) ->
     if path?
@@ -28,5 +30,20 @@ class Controller
       @ui.render()
     , (err) =>
       @logger.info 'Rejected!', err
+
+  _view: (path) ->
+    @ui.load('Loading file...')
+    @ui.render()
+    @client.stream(path, @s3Bucket).then (stream) =>
+      @ui.stopLoad()
+      process.stdin.pause()
+      process.stdin.setRawMode false
+      p = spawn 'less', ['-'], stdio: ['pipe', process.stdout, process.stderr]
+      p.on 'exit', =>
+        process.stdin.setRawMode true
+        process.stdin.resume()
+      stream.pipe(p.stdin)
+    , (err) =>
+      @logger.info 'stream err', err
 
 module.exports = Controller
