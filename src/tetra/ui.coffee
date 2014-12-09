@@ -51,7 +51,7 @@ class UI.FileList extends EventEmitter
     @reset()
 
     @list.on 'select', (item) =>
-      index = item.lpos.yi - (@list.lpos.yi + 1)
+      index = @list.getScroll()
       item = @items[index]
       if item
         @logger.info 'select', item

@@ -75,4 +75,16 @@ describe 'UI', ->
         ]
 
     describe '~select', ->
-      it 'emits the item which correspond to the selected line', ->
+      it 'emits the item corresponding to the lists scroll', (done) ->
+        item = { type: 'directory', path: 'foo' }
+        @subject.setItems [
+          { type: 'directory', path: 'foo' }
+          { type: 'directory', path: 'foo' }
+          item
+          { type: 'directory', path: 'foo' }
+        ]
+        @subject.on 'select', (_item) ->
+          _item.should.equal(item)
+          done()
+        @list.getScroll = -> 2
+        @list.emit 'select'
