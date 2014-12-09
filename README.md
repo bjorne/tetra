@@ -1,5 +1,7 @@
 # Tetra
 
+[![Build Status](https://travis-ci.org/bjorne/tetra.svg?branch=master)](https://travis-ci.org/bjorne/tetra)
+
 An Amazon S3 client for the terminal.
 
     $ npm install -g tetra
