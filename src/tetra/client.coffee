@@ -3,12 +3,9 @@ _path = require('path')
 
 class Client
   constructor: (@logger, @s3Client) ->
-  list: (path) ->
+  listObjects: (path, s3Bucket) ->
     deferred = defer()
-    @logger.info 'path before', path
-    path = _path.normalize('/'+path).replace(/^\//, '') if path != ''
-    @logger.info 'path after', path
-    @s3Client.list prefix: path, delimiter: '/', (err, data) =>
+    @s3Client.listObjects Marker: path, Delimiter: '/', Bucket: s3Bucket, (err, data) =>
       if err
         @logger.warn "Client error: #{err}"
         return deferred.reject(err)
@@ -34,5 +31,34 @@ class Client
 
       deferred.resolve(list)
     deferred.promise
+
+  listBuckets: ->
+    deferred = defer()
+    @s3Client.listBuckets (err, data) =>
+      if err
+        @logger.warn "Client error: #{err}"
+        return deferred.reject(err)
+
+      @logger.info 'client data', data
+      list = []
+      data.Buckets.forEach (bucket) =>
+        list.push
+          type: 'bucket'
+          name: bucket.Name
+
+      deferred.resolve(list)
+    deferred.promise
+
+  list: (path, s3Bucket) ->
+    @logger.info 'path before', path
+    path = _path.normalize('/'+path).replace(/^\//, '') if path != ''
+    @logger.info 'path after', path
+    @logger.info @s3Client
+    if s3Bucket?
+      @listObjects(path,s3Bucket)
+    else
+      @listBuckets()
+
+
 
 module.exports = Client
