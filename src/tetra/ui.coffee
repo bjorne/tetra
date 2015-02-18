@@ -70,6 +70,7 @@ class UI.FileList extends EventEmitter
     # @parent.render()
 
   _renderItem: (item) ->
+    return item.name if item.type == 'bucket'
     return item.message if item.type == 'message'
     @logger.info item
     fileMode = item.mode or item.type[0]
