@@ -5,7 +5,12 @@ class Client
   constructor: (@logger, @s3Client) ->
   listObjects: (path, s3Bucket) ->
     deferred = defer()
-    @s3Client.listObjects Marker: path, Delimiter: '/', Bucket: s3Bucket, (err, data) =>
+    @logger.info 'path', path
+    listOptions =
+      Prefix: path
+      Delimiter: '/'
+      Bucket: s3Bucket
+    @s3Client.listObjects listOptions, (err, data) =>
       if err
         @logger.warn "Client error: #{err}"
         return deferred.reject(err)
