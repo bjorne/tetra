@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/bjorne/tetra.svg?branch=master)](https://travis-ci.org/bjorne/tetra)
 
+![Tetra screenshot](https://cloud.githubusercontent.com/assets/65805/7163057/371f2e3c-e398-11e4-81af-e69e3d16538a.png)
+
 An Amazon S3 client for the terminal.
 
     $ npm install -g tetra
