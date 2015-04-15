@@ -15,7 +15,7 @@ describe 'Client', ->
   describe '#list', ->
     it 'passes the path to the underlying client', (done) ->
       @s3Client.listObjects = (options) ->
-        options.Marker.should.equal('foo/')
+        options.Prefix.should.equal('foo/')
         options.Delimiter.should.equal('/')
         options.Bucket.should.equal('bar')
         done()
